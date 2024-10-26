@@ -1029,6 +1029,8 @@ async function loadCanvasFromLocalStorage() {
             resizeCanvases(initialDimensions.width, initialDimensions.height);
             drawPromptText(ctx, canvas);
             drawPromptText(visualizationCtx, imageVisualization);
+
+            resetCanvas();
         }
 
         // Load the history states
@@ -1235,7 +1237,7 @@ class HelpButton {
 // Initialize the button
 const helpButton = new HelpButton({
     buttonId: 'helpButton',
-    url: 'https://github.com/davidchocholaty/Pic2Paint'
+    url: 'https://github.com/davidchocholaty/Pic2Paint#usage'
 });
 
 function updateDirectionSelectVisibility() {
