@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    color: #333;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+/* Move header to right side */
+.header {
+    text-align: center;
+    padding: 20px 0;
+    grid-column: 2;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    font-style: italic;
+    font-weight: bold;
+    color: #3498db;
+    font-size: 1.2em;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2.5em;
+    font-family: 'Segoe UI', system-ui, sans-serif; /* or any font you prefer */
+    margin-bottom: 10px;
+}
+
+/* Adjust app container to not include the controls */
+.app-container {
+    grid-column: 2;
+    padding: 0 20px;
+}
+
+/* Make controls panel full height */
+.controls {
+    background: white;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: 100vh;
+    position: fixed;
+    width: 300px;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+/* Add margin to first control section */
+.controls .control-section:first-child {
+    margin-top: 15px;
+}
+
+/* Custom scrollbar for controls */
+.controls::-webkit-scrollbar {
+    width: 8px;
+}
+
+.controls::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.controls::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.controls::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.canvas-workspace {
+    display: flex;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Move footer to right side */
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    color: #666;
+    grid-column: 2;
+}
+
+.canvas-container canvas {
+    border: 2px solid black;
+    border-radius: 0px;
+}
+
+#canvas, #imageVisualization {
+    border: 1px solid black;  /* Black border around the canvases */
+    border-radius: 0px;       /* Optional: Rounded corners */
+}
+
+.control-section {
+    margin-bottom: 30px;
+}
+
+.control-section h2 {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+select, input[type="range"], input[type="color"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;    
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-group button {
+    min-height: 40px;  /* Ensures all buttons have the same height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.button-row button {
+    flex: 1;
+    margin: 0;
+}
+
+#forwardButton {
+    background: #3498db;
+}
+
+#forwardButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#forwardButton:hover {
+    background: #2980b9;
+}
+
+.canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.canvas-label {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+}
+
+.control-group {
+    margin: 10px 0;
+}
+
+.control-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+#resetButton {
+    background: #e74c3c;
+}
+
+#undoButton {
+    background: #3498db;
+}
+
+#undoButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#undoButton:hover {
+    background: #2980b9;
+}
+
+#resetButton:hover {
+    background: #b92e29;
+}
+
+.arrow-left, .arrow-right {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.arrow-left {
+    border-right: 5px solid currentColor;
+    margin-right: 5px;
+}
+
+.arrow-right {
+    border-left: 5px solid currentColor;
+    margin-left: 5px;
+}
+
+.confirm-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.confirm-dialog.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-dialog-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.confirm-dialog-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.confirm-dialog-buttons button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm-dialog-buttons .cancel {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+}
+
+.confirm-dialog-buttons .confirm {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+#saveDrawingButton {
+    background: #2ecc71;  /* A fresh green color */
+}
+
+#saveDrawingButton:hover {
+    background: #27ae60;  /* Darker shade for hover state */
+}
+
+#saveDrawingButton:active {
+    background: #219a52;  /* Even darker for click state */
+}
+
+#saveDrawingButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.help-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.help-button:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+}
+
+.help-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.help-button:active {
+    transform: scale(0.95);
+}
+
+/* For better accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .help-button {
+        transition: none;
+    }
+}

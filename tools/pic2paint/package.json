@@ -1,0 +1,24 @@
+{
+  "name": "pic2paint",
+  "version": "1.0.0",
+  "description": "This repository contains the Pic2Paint web app, designed for image-based painting. It was created for the VIN course at BUT FIT in 2024.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon --watch src -e ts --exec ts-node src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.5",
+    "express": "^4.21.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

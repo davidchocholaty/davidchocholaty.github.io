@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pic2Paint - Drawing App</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <h1>Pic<span class="highlight">2</span>Paint</h1>
+        <p>&#x1F3A8; Transform your images into artistic masterpieces &#x1F3A8;</p>
+    </div>
+
+    <div class="app-container">
+        <div class="controls">
+            <div class="control-section">
+                <h2>Canvas Settings</h2>
+                <div class="control-group">
+                    <label for="imageInput">Upload Image</label>
+                    <input type="file" id="imageInput" accept="image/*">
+                </div>                
+            </div>
+
+            <div class="control-section">
+                <h2>Brush Settings</h2>
+                <div class="control-group">
+                    <label for="brushSize">Brush Size</label>
+                    <input type="range" id="brushSize" min="1" max="500" value="50">
+                </div>
+                <div class="control-group">
+                    <label for="brushType">Brush Type</label>
+                    <select id="brushType">
+                        <option value="continuous">Continuous</option>
+                        <option value="circle">Circle</option>
+                        <option value="square">Square</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h2>Effects</h2>
+                <div class="control-group">
+                    <label for="effectSelect">Effect Type</label>
+                    <select id="effectSelect">
+                        <option value="none">No Effect</option>
+                        <option value="blur">Blur</option>
+                        <option value="sharpen">Sharpen</option>
+                        <option value="edgeDetection">Edge Detection</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="effectStrength">Effect Strength</label>
+                    <input type="range" id="effectStrength" min="1" max="10" value="5">
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h2>Sampling Options</h2>
+                <div class="control-group">
+                    <label for="samplingMethod">Method</label>
+                    <select id="samplingMethod">
+                        <option value="normal">Normal</option>
+                        <option value="vertical">Vertical</option>
+                        <option value="horizontal">Horizontal</option>
+                        <option value="random">Random</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="samplingDirection">Direction</label>
+                    <select id="samplingDirection">
+                        <option value="forward">Forward</option>
+                        <option value="backward">Backward</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h2>Canvas Tools</h2>
+                <div class="button-group">
+                    <div class="button-row">
+                        <button id="undoButton" class="btn" disabled>
+                            <span class="arrow-left"></span>
+                            Go Back
+                        </button>
+                        <button id="forwardButton" class="btn" disabled>
+                            Go Forward
+                            <span class="arrow-right"></span>
+                        </button>
+                    </div>
+                    <button id="resetButton" class="btn">Clear Drawing</button>                     
+                    <button id="saveDrawingButton" class="btn">Save Drawing</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-workspace">
+            <div class="canvas-wrapper">
+                <div class="canvas-label">Drawing</div>
+                <canvas id="canvas" width="800" height="600"></canvas>
+            </div>
+            <div class="canvas-wrapper">
+                <div class="canvas-label">Visualization</div>
+                <canvas id="imageVisualization" width="800" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+    <button class="help-button" id="helpButton" aria-label="Help">
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+        >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12" y2="17"></line>
+        </svg>
+    </button>
+
+    <footer class="footer">
+        <p>&copy; 2024 Pic2Paint by David Chocholatý. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js" type="application/javascript"></script>
+</body>
+</html>
